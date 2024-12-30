@@ -1,0 +1,32 @@
+service: lead-scoring-model
+frameworkVersion: '3.39.0'
+
+provider:
+  name: aws
+  runtime: python3.8
+  timeout: 30
+  stage: dev
+  region: ap-southeast-2
+
+custom:
+  serverless-offline:
+    httpPort: 4000
+
+functions:
+  classify_enquiry_lead:
+    handler: handlers/classify_enquiry_lead.lambda_handler
+    description: Classification Model Research
+    timeout: 300
+    events:
+      - http:
+          path: classify/enquiry-lead
+          method: get
+          cors:
+            origin: "*"
+            headers:
+              [
+                "Content-Type"
+              ]
+
+plugins:
+  - serverless-offline

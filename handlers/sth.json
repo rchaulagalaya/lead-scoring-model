@@ -1,0 +1,82 @@
+{[
+	{'ID': ObjectId('61c3e354ebf9c800087b22ee'), 'Loan Amount': 0, 'Previous Opportunity Status': 'Unknown', 'Current Opportunity Status': 'IS - Lead No answer', 'Broker': 'Unknown', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('63bf8b41288d7566a58f2dc7'), 'Loan Amount': None, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'CG_ACCEPTED_PRIMARY_APPLICANT', 'Broker': 'Madhav Gautam', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('63ff7396f07d3d60facdc877'), 'Loan Amount': 280000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Credit Guide Accepted By Primary Applicant', 'Broker': 'Pratik Tuladhar', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64006997f07d3d60fae4bdae'), 'Loan Amount': 120000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Received', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64006b70f07d3d60fae4ec7a'), 'Loan Amount': 0, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Unknown', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('641146d87a60d7194ce46356'), 'Loan Amount': None, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Jenish Manandhar', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('6411716b7a60d7194ce8349f'), 'Loan Amount': 900000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Broker LS1', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64128a627a60d7194c0024e8'), 'Loan Amount': None, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Broker LS2', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('6412901c7a60d7194c00a683'), 'Loan Amount': None, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Broker LS3', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('642296307a60d7194c636617'), 'Loan Amount': None, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Broker LS4', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('642296de7a60d7194c6376a6'), 'Loan Amount': None, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('642535d6add4a25d95a33f54'), 'Loan Amount': 500000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Jenish Manandhar', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('6425361aadd4a25d95a34637'), 'Loan Amount': 200000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Sheng Ye', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('642bce2d028f78d7d68d1fd5'), 'Loan Amount': 180000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('642cfc70028f78d7d6a84fb0'), 'Loan Amount': 0, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Pratik Tuladhar', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('6433b60b03e90d96662a7324'), 'Loan Amount': 300000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Pratik Tuladhar', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('6435297003e90d96664c9bbd'), 'Loan Amount': 550000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64548ae25e06900984451495'), 'Loan Amount': None, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Madhav Gautam', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('645dd13205da843c0e3174af'), 'Loan Amount': None, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Sheng Ye', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('6461b25d05da843c0e86dc8b'), 'Loan Amount': 700000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64785382a7e7099309f8ead5'), 'Loan Amount': 0, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Jenish Manandhar', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('647854caa7e7099309f90b63'), 'Loan Amount': 0, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Credit Guide Accepted By Primary Applicant', 'Broker': 'Unknown', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('648bd04fd8be84314deaf205'), 'Loan Amount': 700000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Received', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64912a40d8be84314d649fc9'), 'Loan Amount': 0, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Credit Guide Accepted By Primary Applicant', 'Broker': 'Unknown', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64916b15d8be84314d6b417a'), 'Loan Amount': 2000000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Credit Guide Accepted By Primary Applicant', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64954639d8be84314dc4cf50'), 'Loan Amount': 40000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('6495477fd8be84314dc4ed4d'), 'Loan Amount': None, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Sandesh Narayan Shrestha', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64993fc6d8be84314d1deb91'), 'Loan Amount': 941430.7, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'Jenish Manandhar', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('649940edd8be84314d1e0e8a'), 'Loan Amount': 400000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Received', 'Broker': 'Sanish Nhemhafuki', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('649bb4cdd8be84314d57a17e'), 'Loan Amount': 700000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Credit Guide Accepted By Primary Applicant', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('649bb8ead8be84314d581083'), 'Loan Amount': 700000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('649bbd55d8be84314d58888d'), 'Loan Amount': 500000000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Credit Guide Accepted By Primary Applicant', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('649d068ad8be84314d76fe9e'), 'Loan Amount': 40000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('649e454dd8be84314d93a942'), 'Loan Amount': 40000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64a24b79d8be84314ded2d73'), 'Loan Amount': 40000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64a63b71d8be84314d45d216'), 'Loan Amount': 1231231, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64acd704d8be84314ddb4de2'), 'Loan Amount': None, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64acd835d8be84314ddb6be7'), 'Loan Amount': None, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64ace343d8be84314ddc6a9d'), 'Loan Amount': None, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Sent', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	},
+	{'ID': ObjectId('64ae1009d8be84314df6a5d6'), 'Loan Amount': 1000000, 'Previous Opportunity Status': '', 'Current Opportunity Status': 'Fact Find Received', 'Broker': 'QA Test', 'FFSent': 'Unknown'
+	}
+]}

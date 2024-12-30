@@ -1,0 +1,170 @@
+{
+  "_id": {
+    "$oid": "642ba93f028f78d7d689685d"
+  },
+  "opportunityId": "642ba8ea0d76fe0008d77597",
+  "opportunityStatusHistory": [
+    {
+      "oldStatus": "",
+      "daysInOldStatus": 0,
+      "newStatus": "Fact Find Sent",
+      "updateDate": {
+        "$date": "2023-04-04T04:36:12.800Z"
+      }
+    },
+    {
+      "oldStatus": "Fact Find Sent",
+      "daysInOldStatus": 0,
+      "newStatus": "Fact Find Received",
+      "updateDate": {
+        "$date": "2023-04-04T04:50:10.851Z"
+      },
+      "data": {
+        "userAgentInfo": {
+          "device": "desktop",
+          "platform": "Windows",
+          "browser": "Edge"
+        }
+      }
+    },
+    {
+      "oldStatus": "Fact Find Received",
+      "daysInOldStatus": 0,
+      "newStatus": "Credit Guide Accepted By Primary Applicant",
+      "updateDate": {
+        "$date": "2023-04-04T04:50:56.043Z"
+      },
+      "data": {
+        "userAgentInfo": {
+          "device": "desktop",
+          "platform": "Windows",
+          "browser": "Edge"
+        }
+      }
+    },
+    {
+      "oldStatus": "Credit Guide Accepted By Primary Applicant",
+      "daysInOldStatus": 1,
+      "newStatus": "Lead",
+      "updateDate": {
+        "$date": "2023-04-04T04:00:24.978Z"
+      }
+    },
+    {
+      "oldStatus": "Lead",
+      "daysInOldStatus": 1,
+      "newStatus": "Ready to Lodge",
+      "updateDate": {
+        "$date": "2023-04-05T04:00:24.978Z"
+      }
+    }
+  ],
+  "currentOpportunityStatus": {
+    "name": "Lead",
+    "updatedAt": {
+      "$date": "2023-04-05T04:00:24.978Z"
+    },
+    "data": {
+      "userAgentInfo": {
+        "device": "desktop",
+        "platform": "Windows",
+        "browser": "Edge"
+      }
+    }
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T06:09:29.995Z"
+  },
+  "applicantInitialLoginInfo": {
+    "userAgentInfo": {
+      "device": "desktop",
+      "platform": "Windows",
+      "browser": "Edge"
+    }
+  }
+}
+{
+  "_id": {
+    "$oid": "66866b5300104b35845dd46d"
+  },
+  "opportunityId": "668669c47f132d7ddb9a9396",
+  "opportunityStatusHistory": [
+    {
+      "oldStatus": "",
+      "daysInOldStatus": 0,
+      "newStatus": "Fact Find Sent",
+      "updateDate": {
+        "$date": "2024-07-04T09:28:48.225Z"
+      }
+    },
+    {
+      "oldStatus": "Fact Find Sent",
+      "daysInOldStatus": 26,
+      "newStatus": "Fact Find Sent",
+      "updateDate": {
+        "$date": "2024-07-30T04:37:43.782Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-07-04T09:28:48.225Z"
+  },
+  "currentOpportunityStatus": {
+    "name": "Fact Find Sent",
+    "updatedAt": {
+      "$date": "2024-07-30T04:37:43.782Z"
+    }
+  },
+  "lcr": {
+    "ffSent": {
+      "$date": "2024-07-04T09:28:48.225Z"
+    }
+  },
+  "updatedAt": {
+    "$date": "2024-07-30T04:37:47.184Z"
+  }
+},
+  {
+    "_id": {
+      "$oid": "6687720f00104b358475836f"
+    },
+    "opportunityId": "668771f550cbe4134876288a",
+    "opportunityStatusHistory": [
+      {
+        "oldStatus": "",
+        "daysInOldStatus": 0,
+        "newStatus": "Lead",
+        "updateDate": {
+          "$date": "2024-07-05T03:33:28.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2024-07-05T03:33:28.000Z"
+    },
+    "currentOpportunityStatus": {
+      "name": "Lead",
+      "updatedAt": {
+        "$date": "2024-07-05T03:33:28.000Z"
+      }
+    },
+    "conversionPage": "enquiry-form-stand-alone-v3",
+    "leadOriginatingPage": "free-quote",
+    "pluginPageSlug": "enquiry-form-stand-alone-v3",
+    "pluginName": "Redesigned_Enquiry_Form_V3",
+    "loanAmount": "400000",
+    "broker": {
+      "email": "developers@homeloanexperts.com.au",
+      "name": "Test Broker"
+    },
+    "updatedAt": {
+      "$date": "2024-07-05T04:09:51.662Z"
+    }
+  },
+
+//From this data, Select Fields :  " loanAmount, opportunityStatusHistory, currentOpportunityStatus, Broker, ffSent 
+//Display data should be like :
+//Loan Amount 	Previous opportunity Status                                                                       CurrentOpportunityStatus                                                         Broker                                                        FFSent
+//0                     Credit Guide Accepted By Primary Applicant( logic -recent old status)     Lead                                                                                          "Unknown"                                                "Unknown"
+//0                     Fact Find Sent                                                                                           Fact Find Sent"                                                                           "Unknown"                                            2024-07-04T09:28:48.225Z
+//400000           "Unknown"                                                                                                  Lead                                                                                              Test Broker                                       "Unknown"
