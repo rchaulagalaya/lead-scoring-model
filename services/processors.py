@@ -1,4 +1,8 @@
+from enum import Enum
 import logging
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+
 from services import mongo_service as mongoDbService
 # set logger object
 logger = logging.getLogger()
@@ -9,20 +13,20 @@ db = mongoDbService.dbConnection()
 import json
 from datetime import datetime, timezone
 
-class data_service:
-     # Function to format the date
+class data_provider:
     def format_date(self,date_str):
+        """ Formats to string date. removes timezone.
+               Parse the date and format it to the desired string format
+        """
         try:
-            # Parse the date and format it to the desired string format
             return datetime.fromisoformat(date_str.replace("Z", "+00:00")).strftime("%Y-%m-%d %H:%M:%S.%f")
         except Exception:
             return "NO DATE"
 
-    def from_json(self, data_count):
+    def from_json(self, data_count,file_path):
         try:
-            json_file_path = "sample-data/plf_lead_events_raw_prod_original.json"
-            # json_file_path = "sample-data/plf_lead_events_raw_prod.json"
-            logger.info("----------GET JSON data from %s", json_file_path)
+            json_file_path = file_path
+            logger.info("Fetching data from Json. File path %s",json_file_path)
 
             # Get the start of the current month
             now = datetime.now()
@@ -31,7 +35,7 @@ class data_service:
             # Load JSON data from the file
             with open(json_file_path, "r", encoding="utf-8") as file:
                 json_data = json.load(file)
-                logger.info("Loaded JSON data count: %d", len(json_data))
+                logger.info("Loaded Json data count: %d", len(json_data))
 
                 # Filter data
                 filtered_data = []
@@ -66,15 +70,14 @@ class data_service:
                     except Exception as inner_error:
                         logger.warning("Error processing document: %s. Skipping it.", inner_error)
 
-                logger.info("Filtered JSON data count: %d", len(filtered_data))
+                logger.info("Filtered Json data count: %d", len(filtered_data))
 
                  # Process and standardize the fetched data
                 processed_data = []
                 for f_data in filtered_data:
-                     # Check if ffSent is a datetime object , yes then convert to string
-                    fff_sent_date = f_data.get("lcr", {}).get("ffSent", {}).get("$date", "NA")#ff_sent = doc.get("lcr", {}).get("ffSent", "NA")
+                    fff_sent_date = f_data.get("lcr", {}).get("ffSent", {}).get("$date", "NA")
                     if isinstance(fff_sent_date, datetime):
-                        fff_sent_date = datetime.fromisoformat(fff_sent_date.replace("Z", "+00:00")).strftime("%Y-%m-%d %H:%M:%S.%f")    #ff_sent.strftime("%Y-%m-%d %H:%M:%S")  # Convert to string
+                        fff_sent_date = datetime.fromisoformat(fff_sent_date.replace("Z", "+00:00")).strftime("%Y-%m-%d %H:%M:%S.%f")
 
                     processed_data.append({
                         "_id": f_data.get("_id"),
@@ -85,15 +88,15 @@ class data_service:
                         "lcr.ffSent": fff_sent_date
                     })
 
-                logger.info("Standardized JSON data count %s", len(processed_data))
+                logger.info("Processed Json data count: %s", len(processed_data))
                 return processed_data
-
+            
         except Exception as e:
-            logger.error("An error occurred while reading the JSON data: %s", e)
+            logger.error("An error occurred while reading the JSON data: %s from path %d", e,json_file_path)
 
     def from_db(self, data_count):
         try:
-            logger.info("----------Fetching data from Database.")
+            logger.info("Fetching data from Database.")
 
             # Get the start of the current month
             now = datetime.now()
@@ -153,10 +156,112 @@ class data_service:
                     "lcr.ffSent": ff_sent
                 })
 
-            logger.info("Got data from Db . TOTAL %s", len(processed_data))
-            # Close MongoDB connection
+            logger.info("Retrieved data from Database. TOTAL %s", len(processed_data))
             db.close_mongo_connection(connection=client)
-            return processed_data  # Return filtered and limited DataFrame
+            return processed_data 
         except Exception as ex:
             logger.error("Error while reading data from database: %s", str(ex))
             return None
+
+
+class data_processor:
+
+    def process_data(self,records):
+        """
+        Cleans and formats raw data into a structured format.
+
+        Args:
+            records (list[dict]): List of raw data records.
+
+        Returns:
+            list[dict]: List of processed data dictionaries.
+        """
+        logger.info("Started Processing data. NA None. Data Count %s",len(records))
+        processed = []
+        for record in records:
+            processed.append({
+                "ID": record.get("_id", 0),
+                "Loan Amount": record.get("loanAmount", "NA") or "NA",
+                "Lead Source": record.get("leadSource", "NA") or "NA",
+                "Lead Category": record.get("leadCategory", "NA") or "NA",
+                "Lead Segment": record.get("leadSegment", "NA") or "NA",
+                "FF Sent": record.get("lcr.ffSent", "NA") or "NA",
+            })
+        logger.info("Completed Processing data. NA None. Processed Data Count %s",len(records))
+        return processed  
+
+    def encode_categorical_variables(self,df, categorical_columns):
+        """
+        Encodes categorical variables in the DataFrame.
+
+        Args:
+            df (pd.DataFrame): DataFrame containing data to encode.
+            categorical_columns (list[str]): List of column names to encode.
+
+        Returns:
+            pd.DataFrame: DataFrame with encoded categorical variables.
+        """
+        logger.info("Started Encoding data. Encoding Data Count %s",len(df))
+        logger.info("Encoding categorical variables/ features. Feature Variable Count %s",len(categorical_columns))
+        label_encoder = LabelEncoder()
+        for col in categorical_columns:
+            df[col] = label_encoder.fit_transform(df[col].astype(str))
+        logger.info("Completed Encoding data. Count %s",len(df))
+        return df
+
+    def prepare_features_and_labels(self,df, predictors, target_column='FF Sent'):
+        """
+        Prepares feature matrix and label vector.
+
+        Args:
+            df (pd.DataFrame): Processed DataFrame.
+            target_column (str): Name of the target column.
+            predictors (list[str]): List of predictor column names.
+
+        Returns:
+            tuple: (X, y) where X is the feature matrix and y is the label vector.
+        """
+        logger.info("Started Feature Engineering. Preparing features & labels from encoded data count %s",len(df))
+
+        if predictors is None:
+            predictors = ['Loan Amount', 'Lead Source', 'Lead Category', 'Lead Segment']
+
+        X = df[predictors]
+        y = (df[target_column] != "NA").astype(int)
+        logger.info("Generated Features (X) %s Labels(y) %d",len(X),len(y))
+        return X, y
+
+    def preprocess_data(self,records, categorical_columns, target_column='FF Sent'):
+        """
+        Full preprocessing pipeline for data.[Clean>DataFrame>Encode>FeatureEngineering]
+
+        Args:
+            records (list[dict]): Raw data records.
+            categorical_columns (list[str]): List of categorical column names.(features)
+            target_column (str): Name of the target column.(labels)
+
+        Returns:
+            tuple: (X, y) where X is the feature matrix and y is the label vector.
+        """
+        # Step 1: Clean and format data
+        processed_records = self.process_data(records)
+
+        # Step 2: Convert to DataFrame
+        df = pd.DataFrame(processed_records)
+
+        # Step 3: Encode categorical variables
+        df = self.encode_categorical_variables(df, categorical_columns)
+
+        # Step 4: Prepare features and labels
+        X, y = self.prepare_features_and_labels(df,categorical_columns,target_column)
+
+        return X, y
+
+
+class DataSource(Enum):
+    JSON = "JSON"
+    DATABASE = "DATABASE"
+
+class ClassifierType(Enum):
+    BINARY = "BINARY"
+    NON_BINARY = "NON_BINARY"

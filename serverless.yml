@@ -7,7 +7,15 @@ provider:
   timeout: 30
   stage: dev
   region: ap-southeast-2
-
+  environment: # GLOBAL MODEL SETTINGS 
+    DATA_SOURCE: "JSON"
+    ACTION: "evaluation" # prediction
+    UNDER_SAMPLE_MAJORITY: False
+    DATA_COUNT: 22222
+    CLASSIFIER_TYPE: "BINARY" # "NON-BINARY"
+    BINARY_CLASSIFIER_MODEL_NAME: "binary_classifier_rf_model_TEST.joblib"
+    # ENV: "local"
+    DB_ENV: "prod"
 custom:
   serverless-offline:
     httpPort: 4000
@@ -15,11 +23,25 @@ custom:
 functions:
   classify_enquiry_lead:
     handler: handlers/classify_enquiry_lead.lambda_handler
-    description: Classification Model Research
+    description: Classification Model Generator
     timeout: 300
     events:
       - http:
           path: classify/enquiry-lead
+          method: get
+          cors:
+            origin: "*"
+            headers:
+              [
+                "Content-Type"
+              ]
+  predict_enquiry:
+    handler: handlers/predict_enquiry.lambda_handler
+    description: Predict Enquiry Lead Score
+    timeout: 300
+    events:
+      - http:
+          path: classify/predict-enquiry
           method: get
           cors:
             origin: "*"

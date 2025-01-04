@@ -15,8 +15,9 @@ class dbConnection:
 
 		try:
 			# mongo_server = "mongodb+srv://{username}:{password}@cluster0-dk5qf.mongodb.net/"
+			mongo_server = "mongodb+srv://mongouser:H8zYgzuQbTb5psyc@cluster0-dk5qf.mongodb.net/" # dev server
 			# mongo_server = "mongodb://localhost:27017/"
-			mongo_server = "mongodb+srv://mongouser:mPtojUhz4TadduZ6@cluster0-8zgt8.mongodb.net/test?retryWrites=true&w=majority"
+			# mongo_server = "mongodb+srv://mongouser:mPtojUhz4TadduZ6@cluster0-8zgt8.mongodb.net/test?retryWrites=true&w=majority" # prod server
 
 			logger.info("mongo_server : ")
 			logger.info(mongo_server)
