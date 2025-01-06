@@ -1,23 +1,22 @@
 import os
-from services import processors as processors
-DataSource= processors.DataSource
-ClassifierType = processors.ClassifierType
+from common import DataSource, ClassifierType
 
 class Config:
     # Environment configurations
     ENV = os.getenv("ENV", "local")  # Default to "Dev" if ENV is not set  
     JSON_FILE_PATHS = {
-        "testing": "sample-data/plf_lead_events_test_data.json",
+        "testing": "sample-data/plf_lead_events_test_data.json", # mode this to env settings
         "training": "sample-data/plf_lead_events_raw_prod_original.json",
     }
     DB_ENV={
         "local": "mongodb://localhost:27017/",
-        "testing_db": "mongodb+srv://mongouser:H8zYgzuQbTb5psyc@cluster0-dk5qf.mongodb.net/",
-        "training_db": "mongodb+srv://mongouser:mPtojUhz4TadduZ6@cluster0-8zgt8.mongodb.net/test?retryWrites=true&w=majority"
+        # "testing_db":  "mongodb+srv://mongouser:H8zYgzuQbTb5psyc@cluster0-dk5qf.mongodb.net/",
+        "testing_db":  "mongodb+srv://mongouser:mPtojUhz4TadduZ6@cluster0-8zgt8.mongodb.net/test?retryWrites=true&w=majority", # prod
+        "training_db": "mongodb+srv://mongouser:mPtojUhz4TadduZ6@cluster0-8zgt8.mongodb.net/test?retryWrites=true&w=majority" # prod
         }
     DATA_SOURCE = os.getenv("DATA_SOURCE", "JSON") # Default to JSON if not set
     DATA_COUNT= os.getenv("DATA_COUNT","200000") # Default 200000
-    UNDER_SAMPLE_MAJORITY=os.getenv("UNDER_SAMPLE_MAJORITY", True).lower()  # Default False
+    UNDER_SAMPLE_MAJORITY=os.getenv("UNDER_SAMPLE_MAJORITY", "False").lower() == "true"  # Converts to boolean #os.getenv("UNDER_SAMPLE_MAJORITY", True) # Default False
     CLASSIFIER_TYPE= os.getenv("CLASSIFIER_TYPE",ClassifierType.BINARY) # Default BINARY
     BINARY_CLASSIFIER_MODEL_NAME = os.getenv("BINARY_CLASSIFIER_MODEL_NAME", "")
 
@@ -26,6 +25,7 @@ class Config:
     def get_data_source():
         """Get the data source setting (JSON or DATABASE)."""
         data_source = Config.DATA_SOURCE
+        print(f"data_source: {data_source}")
         if data_source in DataSource.__members__:  # This checks if the value exists in the enum's member names
             return DataSource[data_source]  # This converts the string to the corresponding enum member
         else:
@@ -33,7 +33,7 @@ class Config:
 
     @staticmethod
     def get_data_count():
-        return  Config.DATA_COUNT    
+        return  int(Config.DATA_COUNT)    
 
     @staticmethod
     def get_under_sample_flag():
@@ -54,7 +54,7 @@ class Config:
         return Config.JSON_FILE_PATHS[purpose]
 
     @staticmethod
-    def get_db_environment(purpose: str) -> str:
+    def get_db_server(purpose: str) -> str:
         """Get the Database environment (local, dev, prod, uat, test) from the environment variable."""
         if purpose not in Config.DB_ENV:
             raise ValueError(
@@ -70,6 +70,40 @@ class Config:
             return ClassifierType[classifier_type]
         else:
            raise ValueError(f"Invalid CLASSIFIER_TYPE: {Config.CLASSIFIER_TYPE} found in env settings. Expected one of: {list(ClassifierType.__members__.keys())}")
-          
+     
+    _logger = None 
+    @staticmethod
+    def configure_logger():
+        import logging
+        from logging.handlers import RotatingFileHandler
 
-          
+        logger = logging.getLogger(__name__)  # Module-specific logger
+        logger.setLevel(logging.INFO)
+
+        if not logger.handlers:  # Prevent duplicate handlers
+            # File handler
+            log_file_grows_indifinitely = True
+            if log_file_grows_indifinitely:
+                file_handler = RotatingFileHandler("classifier_logs_growing.txt", maxBytes=5*1024*1024, backupCount=5)
+            else:
+                file_handler = logging.FileHandler("classifier_logs.txt")
+
+            file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+            logger.addHandler(file_handler)
+
+            # Stream handler
+            console_handler = logging.StreamHandler()
+            console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+            logger.addHandler(console_handler)
+
+        return logger
+
+    @staticmethod
+    def get_logger():
+        if Config._logger is None:
+            Config._logger = Config.configure_logger()
+        return Config._logger
+
+
+
+

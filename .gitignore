@@ -7,3 +7,5 @@ node_modules/
 *.pyc
 .vs/
 env_scoring_model/
+*/sample-data
+*.txt

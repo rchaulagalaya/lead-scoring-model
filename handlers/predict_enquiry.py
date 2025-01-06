@@ -8,24 +8,24 @@ from joblib import load
 import pandas as pd
 from sklearn.metrics import accuracy_score, classification_report
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
-classify = classifier.classifier()
-data_processor = processorService.data_processor()
-data_provider=processorService.data_provider()
 config=Config()
+logger = Config.get_logger()
+data_processor = processorService.data_processor(logger)
+data_provider=processorService.data_provider(logger)
+classify = classifier.classifier(config,logger,data_processor,data_provider)
+
 def lambda_handler(event, context):
     try:
         logger.info("Prediction request received.")
         classifier_type=config.get_classifier_type()
         data_source = config.get_data_source()
         model_name = config.get_binary_classifier_model_name() # load('binary_classifier_rf_model_NEW.joblib')
-        data_count = config.get_data_source()
-        logger.info(f"Cassifier Settings: \n" 
-                    f"Data source: {data_source}, "
-                    f"Data count: {data_count}, "
-                    f"Model name: {model_name}, "
-                    f"Classifier Type: {classifier_type.value}.")  # Log classifier type as string
+        data_count = config.get_data_count()
+        logger.info(f"Predictors Settings: \n" 
+                            f"Data source: {data_source},\n "
+                            f"Data count: {data_count}, \n"
+                            f"Model name: {model_name}, \n"
+                            f"Classifier Type: {classifier_type.value}\n")  # Log classifier type as string
 
         output ={}
 
@@ -43,7 +43,7 @@ def lambda_handler(event, context):
             testing_data_path = config.get_json_file_path("testing")
             sample_test_data = data_provider.from_json(data_count,testing_data_path)
         elif data_source == data_source.DATABASE:
-            sample_test_data = data_provider.from_db(data_count)
+            sample_test_data = data_provider.from_db(data_count,"testing_db" )#todo: enum purpose
         else:
             logger.info("Data source for prediction request not found. Data Source : %s", data_source)
             return dict(statusCode=200, body="We've received your request.!!")
@@ -62,8 +62,8 @@ def lambda_handler(event, context):
         logger.info("Encoded prediction data (feature and labels.)")
         # Feed into Model predictions
         logger.info("Feeding test data into model for predictions. %s",len(X_test))
-        logger.info(X_test)
-        logger.info(y_test)
+        # logger.info(X_test)
+        # logger.info(y_test)
         y_pred = model.predict(X_test)
         output = {"predictions": y_pred.tolist()}
 
@@ -71,13 +71,19 @@ def lambda_handler(event, context):
         if y_test is not None:
             logger.info("Evaluating Model's Performance : you've provided output")
             accuracy = accuracy_score(y_test, y_pred)
-            report = classification_report(y_test, y_pred, output_dict=True)            
+            # df_ac_report = pd.DataFrame(accuracy)
+            logger.info(f"Accuracy Report :\n {accuracy}")
+
+            report = classification_report(y_test, y_pred,zero_division=0, output_dict=True)   
+            df_report = pd.DataFrame(report).transpose()
+            logger.info(f"Classification Report : \n {df_report.to_string()}")
+
             output["evaluation"] = {
                 "accuracy": accuracy,
                 "classification_report": report
             }
             logger.info("Successfully generated predictions and evaluation.")
-            logger.info(output)
+            # logger.info(output)
         else:
             logger.info(output)
             logger.info("Successfully generated predictions.")
