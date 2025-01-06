@@ -1,0 +1,301 @@
+[
+  {
+    "_id": {
+      "$oid": "6433e8dcbf990396f022eba9"
+    },
+    "opportunityId": "6433e8d2100ecb00088ad169",
+    "opportunityStatusHistory": [
+      {
+        "oldStatus": "",
+        "daysInOldStatus": 0,
+        "newStatus": "Lead",
+        "updateDate": {
+          "$date": "2023-04-10T10:45:45.692Z"
+        }
+      },
+      {
+        "oldStatus": "Lead",
+        "daysInOldStatus": 1,
+        "newStatus": "Lead - no answer",
+        "updateDate": {
+          "$date": "2023-04-11T08:11:47.108Z"
+        }
+      },
+      {
+        "oldStatus": "Lead - no answer",
+        "daysInOldStatus": 3,
+        "newStatus": "IS - Lead No answer",
+        "updateDate": {
+          "$date": "2023-04-14T04:15:54.435Z"
+        }
+      },
+      {
+        "oldStatus": "IS - Lead No answer",
+        "daysInOldStatus": 28,
+        "newStatus": "Un-contactable Lead",
+        "updateDate": {
+          "$date": "2023-05-12T08:00:28.647Z"
+        }
+      }
+    ],
+    "currentOpportunityStatus": {
+      "name": "Un-contactable Lead",
+      "updatedAt": {
+        "$date": "2023-05-12T08:00:28.647Z"
+      }
+    },
+    "updatedAt": {
+      "$date": "2024-05-23T09:31:40.457Z"
+    },
+    "broker": {
+      "name": "Preeti Kowshik",
+      "avatar": "https://lh3.googleusercontent.com/a-/AOh14GgH5QQpp9j8oiAdbTWRvXAIOQ4CuCP8cyE1E01I=s96-c",
+      "email": "preeti@homeloanexperts.com.au",
+      "phoneNo": "0414 546 846"
+    },
+    "brokerId": "257e6927-50df-441c-b32e-713e8000a898",
+    "conversionPage": null,
+    "leadOriginatingPage": "investment-loans/buying-property-overseas",
+    "loanAmount": 23,
+    "pluginName": "Stand Alone Enquiry Form",
+    "pluginPageSlug": "free-quote",
+    "createdAt": {
+      "$date": "2023-02-10T10:45:38.884Z"
+    },
+    "opportunityInfo": {
+      "emailAddress": "kiavashm@yahoo.com",
+      "fullName": "Kia Mous"
+    },
+    "leadCategory": "LDAS",
+    "leadSource": "Website - Complete",
+    "enquiryId": 437400,
+    "mercuryId": "0e93a0cb-f79a-4765-ae5b-3981237964b0",
+    "leadSegment": "below300k"
+  },
+  {
+    "_id": {
+      "$oid": "643402b5bf990396f0251d5b"
+    },
+    "opportunityId": "641d127e8dfa2b00082aeb5e",
+    "followUpEmailClickInfo": {
+      "userAgentInfo": {
+        "device": "desktop",
+        "platform": "Windows",
+        "browser": "Chrome"
+      }
+    },
+    "updatedAt": {
+      "$date": "2024-05-23T09:31:40.457Z"
+    },
+    "applicantInitialLoginInfo": {
+      "userAgentInfo": {
+        "device": "desktop",
+        "platform": "Windows",
+        "browser": "Chrome"
+      }
+    },
+    "opportunityStatusHistory": [
+      {
+        "oldStatus": "",
+        "daysInOldStatus": 0,
+        "newStatus": "Credit Guide Accepted By Primary Applicant",
+        "updateDate": {
+          "$date": "2023-04-10T13:45:28.269Z"
+        },
+        "data": {
+          "userAgentInfo": {
+            "device": "desktop",
+            "platform": "Windows",
+            "browser": "Chrome"
+          }
+        }
+      },
+      {
+        "oldStatus": "Credit Guide Accepted By Primary Applicant",
+        "daysInOldStatus": 8,
+        "newStatus": "Pending SAF",
+        "updateDate": {
+          "$date": "2023-04-18T02:30:25.948Z"
+        }
+      }
+    ],
+    "currentOpportunityStatus": {
+      "name": "Pending SAF",
+      "updatedAt": {
+        "$date": "2023-04-18T02:30:25.948Z"
+      },
+      "data": {
+        "userAgentInfo": {
+          "device": "desktop",
+          "platform": "Windows",
+          "browser": "Chrome"
+        }
+      }
+    },
+    "broker": {
+      "name": "Prakash Rai",
+      "email": "prakash@homeloanexperts.com.au"
+    },
+    "brokerId": "567b61b4-9898-49f6-8904-aaf801145049",
+    "leadSourceId": "fffbb31a-632f-11df-a645-4df8f5e18a0c",
+    "loanAmount": 354307,
+    "createdAt": {
+      "$date": "2023-03-24T03:01:18.150Z"
+    },
+    "opportunityInfo": {
+      "emailAddress": "andylaw85@hotmail.com",
+      "fullName": "Andrew Tse Ming Law"
+    },
+    "leadCategory": "INCOMPLETE",
+    "lcr": {
+      "ffSent": {
+        "$date": "2023-03-24T06:59:51.683Z"
+      },
+      "ffReceived": {
+        "$date": "2024-06-19T09:49:43.819Z"
+      }
+    },
+    "enquiryId": 437402,
+    "leadSource": "Repeat Customer",
+    "leadSegment": "below300k",
+    "mercuryId": "a39e66af-e643-4f4c-8377-bcbf7b78371c"
+  },
+
+  {
+    "_id": {
+      "$oid": "66a1796c14224eec220949a8"
+    },
+    "opportunityId": "66a1796229dfc400087ef8ef",
+    "opportunityStatusHistory": [
+      {
+        "oldStatus": "",
+        "daysInOldStatus": 0,
+        "newStatus": "Lead",
+        "updateDate": {
+          "$date": "2024-07-24T21:57:52.000Z"
+        }
+      },
+      {
+        "oldStatus": "Lead",
+        "daysInOldStatus": 0,
+        "newStatus": "Lead",
+        "updateDate": {
+          "$date": "2024-07-24T22:00:11.086Z"
+        }
+      },
+      {
+        "oldStatus": "Lead",
+        "daysInOldStatus": 0,
+        "newStatus": "Lead - no answer",
+        "updateDate": {
+          "$date": "2024-07-25T08:10:54.173Z"
+        }
+      },
+      {
+        "oldStatus": "Lead - no answer",
+        "daysInOldStatus": 1,
+        "newStatus": "Lead - no answer 2",
+        "updateDate": {
+          "$date": "2024-07-26T06:10:58.934Z"
+        }
+      },
+      {
+        "oldStatus": "Lead - no answer 2",
+        "daysInOldStatus": 7,
+        "newStatus": "False Contact information",
+        "updateDate": {
+          "$date": "2024-08-02T06:01:42.880Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2023-01-01T22:00:02.015Z"
+    },
+    "currentOpportunityStatus": {
+      "name": "False Contact information",
+      "updatedAt": {
+        "$date": "2024-08-02T06:01:42.880Z"
+      }
+    },
+    "conversionPage": "unusual-employment-loans/teacher-home-loans",
+    "leadOriginatingPage": "unusual-employment-loans/teacher-home-loans",
+    "pluginPageSlug": "free-quote",
+    "pluginName": "Redesigned_Enquiry_Form_V3",
+    "loanAmount": "565800",
+    "broker": {
+      "name": "Sunish Vaidya",
+      "avatar": "https://lh3.googleusercontent.com/a-/AOh14Gh4cXtFAUPEIy1Xq_ZCOMSa4oXSvhrtxvx6KwxXug=s96-c",
+      "email": "sunish@homeloanexperts.com.au",
+      "phoneNo": "0291941798"
+    },
+    "opportunityInfo": {
+      "fullName": "Kim Powell",
+      "emailAddress": "kim.powell257@gmail.com"
+    },
+    "updatedAt": {
+      "$date": "2024-08-02T06:01:42.981Z"
+    },
+    "lcr": {},
+    "leadCategory": "LDAS",
+    "leadSource": "Website - Complete",
+    "enquiryId": 480309,
+    "mercuryId": "53de1ace-e917-46c5-b25b-fa9a688f98da",
+    "leadSegment": "employment"
+  },
+
+
+  {
+    "_id": {
+      "$oid": "6772605286322ca6e4ecddf7"
+    },
+    "opportunityId": "67726036fb9bd3625156442d",
+    "opportunityStatusHistory": [
+      {
+        "oldStatus": "",
+        "daysInOldStatus": 0,
+        "newStatus": "Lead",
+        "updateDate": {
+          "$date": "2023-01-30T08:29:28.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2024-01-30T08:29:28.000Z"
+    },
+    "currentOpportunityStatus": {
+      "name": "Lead",
+      "updatedAt": {
+        "$date": "2024-12-30T08:29:28.000Z"
+      }
+    },
+    "conversionPage": "investment-loans/buying-property-overseas",
+    "leadOriginatingPage": "investment-loans/buying-property-overseas",
+    "pluginPageSlug": "free-quote",
+    "pluginName": "Enquiry_Form_V3.1",
+    "leadSource": "Website - Complete",
+    "loanAmount": "250000",
+    "broker": {
+      "name": "Maria Hitang",
+      "email": "maria.h@homeloanexperts.com.au"
+    },
+    "opportunityInfo": {
+      "fullName": "David Fuller",
+      "emailAddress": "dave.full2@bigpond.com"
+    },
+    "lcr": {
+      "ffSent": {
+        "$date": "2022-02-22T06:59:51.683Z"
+      },
+      "ffReceived": {
+        "$date": "2024-06-19T09:49:43.819Z"
+      }
+    },
+    "leadCategory": "LDAS",
+    "leadSegment": "incomplete_leads",
+    "mercuryId": "6a4c7713-036b-4e68-b6b4-db05fe4c9151",
+    "enquiryId": 494021,
+    "updatedAt": {
+      "$date": "2024-12-30T08:56:50.080Z"
+    }
+  }
+]
