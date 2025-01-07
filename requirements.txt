@@ -3,6 +3,7 @@ simplejson==3.17.6
 pymysql
 pymongo==4.8.0
 numpy==1.22.4
+python-dotenv
 seaborn==0.12.2
 matplotlib==3.8.0
 #scikit-learn==1.3.0

@@ -7,14 +7,6 @@ provider:
   timeout: 30
   stage: dev
   region: ap-southeast-2
-  environment: # GLOBAL MODEL SETTINGS 
-    DATA_SOURCE: "DATABASE" #"DATABASE" # "JSON" # 
-    ACTION: "evaluation" # prediction
-    UNDER_SAMPLE_MAJORITY: True
-    DATA_COUNT: 500000
-    CLASSIFIER_TYPE: "BINARY" # "NON-BINARY"
-    BINARY_CLASSIFIER_MODEL_NAME: "binary_classifier_rf_model_PROD_US.joblib"
-    DB_ENV: "prod"
 custom:
   serverless-offline:
     httpPort: 4000

@@ -49,7 +49,7 @@ def lambda_handler(event, context):
             return dict(statusCode=200, body="We've received your request.!!")
 
         if not sample_test_data:
-            logger.info("No prediction data found.")
+            logger.info("No data found for prediction.")
             return dict(statusCode=200, body="We've received your request!!")
 
         logger.info("Fetched testing data. Data count %s",len(sample_test_data))

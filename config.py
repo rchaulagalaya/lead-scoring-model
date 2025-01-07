@@ -1,23 +1,24 @@
 import os
+from dotenv import load_dotenv
 from common import DataSource, ClassifierType
+# Load environment variables from .env file
+load_dotenv()
 
 class Config:
     # Environment configurations
-    ENV = os.getenv("ENV", "local")  # Default to "Dev" if ENV is not set  
+    ENV = os.getenv("ENV", "local")  # Default to "Dev" if ENV is not set
     JSON_FILE_PATHS = {
         "testing": "sample-data/plf_lead_events_test_data.json", # mode this to env settings
         "training": "sample-data/plf_lead_events_raw_prod_original.json",
     }
     DB_ENV={
-        "local": "mongodb://localhost:27017/",
-        # "testing_db":  "mongodb+srv://mongouser:H8zYgzuQbTb5psyc@cluster0-dk5qf.mongodb.net/",
-        "testing_db":  "mongodb+srv://mongouser:mPtojUhz4TadduZ6@cluster0-8zgt8.mongodb.net/test?retryWrites=true&w=majority", # prod
-        "training_db": "mongodb+srv://mongouser:mPtojUhz4TadduZ6@cluster0-8zgt8.mongodb.net/test?retryWrites=true&w=majority" # prod
+         "testing_db": os.getenv("TESTING_DB", "mongodb://localhost:27017/"),
+        "training_db": os.getenv("TRAINING_DB", "mongodb://localhost:27017/")
         }
     DATA_SOURCE = os.getenv("DATA_SOURCE", "JSON") # Default to JSON if not set
     DATA_COUNT= os.getenv("DATA_COUNT","200000") # Default 200000
-    UNDER_SAMPLE_MAJORITY=os.getenv("UNDER_SAMPLE_MAJORITY", "False").lower() == "true"  # Converts to boolean #os.getenv("UNDER_SAMPLE_MAJORITY", True) # Default False
-    CLASSIFIER_TYPE= os.getenv("CLASSIFIER_TYPE",ClassifierType.BINARY) # Default BINARY
+    UNDER_SAMPLE_MAJORITY=os.getenv("UNDER_SAMPLE_MAJORITY", "True").lower() == "true"  # Converts to boolean #os.getenv("UNDER_SAMPLE_MAJORITY", True) # Default False
+    CLASSIFIER_TYPE= os.getenv("CLASSIFIER_TYPE","BINARY") # Default BINARY
     BINARY_CLASSIFIER_MODEL_NAME = os.getenv("BINARY_CLASSIFIER_MODEL_NAME", "")
 
 
@@ -33,7 +34,7 @@ class Config:
 
     @staticmethod
     def get_data_count():
-        return  int(Config.DATA_COUNT)    
+        return  int(Config.DATA_COUNT)
 
     @staticmethod
     def get_under_sample_flag():
@@ -60,8 +61,8 @@ class Config:
             raise ValueError(
                 f"Invalid purpose '{purpose}' provided. Expected one of: {', '.join(Config.DB_ENV.keys())}"
             )
-        return Config.DB_ENV[purpose]       
-    
+        return Config.DB_ENV[purpose]
+
     @staticmethod
     def get_classifier_type():
         """Get the classifier type based on the environment variable."""
@@ -70,8 +71,8 @@ class Config:
             return ClassifierType[classifier_type]
         else:
            raise ValueError(f"Invalid CLASSIFIER_TYPE: {Config.CLASSIFIER_TYPE} found in env settings. Expected one of: {list(ClassifierType.__members__.keys())}")
-     
-    _logger = None 
+
+    _logger = None
     @staticmethod
     def configure_logger():
         import logging

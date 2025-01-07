@@ -10,3 +10,4 @@ env_scoring_model/
 /sample-data/
 *.txt
 
+*.env
